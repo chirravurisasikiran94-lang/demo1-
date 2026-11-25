@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ATLAS — Universal Sector Aggregator</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= LOGIN / SIGNUP ================= -->
+
+<div class="auth-gate" id="authGate">
+
+    <div class="auth-shell">
+
+        <section class="auth-story">
+
+            <div class="auth-logo">ATLAS<span>.</span></div>
+
+            <div>
+                <div class="eyebrow" style="color:#55d9e9">
+                    THE UNIVERSAL EXCHANGE
+                </div>
+
+                <h1>
+                    Every sector.<br>
+                    One connected<br>
+                    <span style="color:#55d9e9">economy.</span>
+                </h1>
+
+                <p>
+                    One intelligent platform to discover partners,
+                    connect supply with demand and coordinate
+                    opportunities across industries.
+                </p>
+
+                <div class="auth-points">
+
+                    <div class="auth-point">
+                        <span class="auth-check">✓</span>
+                        Multi-sector marketplace access
+                    </div>
+
+                    <div class="auth-point">
+                        <span class="auth-check">✓</span>
+                        Partner discovery and trade workflows
+                    </div>
+
+                    <div class="auth-point">
+                        <span class="auth-check">✓</span>
+                        Centralised insights and administration
+                    </div>
+
+                </div>
+            </div>
+
+            <div style="font:10px 'DM Mono';color:#8096a7">
+                ACADEMIC REVIEW PROTOTYPE · 2026
+            </div>
+
+        </section>
+
+
+        <section class="auth-form-area">
+
+            <div class="auth-kicker">WELCOME TO ATLAS</div>
+
+            <h2 id="authTitle">Sign in to your account</h2>
+
+            <p class="auth-sub" id="authSubtitle">
+                Access your connected industry network.
+            </p>
+
+
+            <div class="auth-tabs" id="authTabs">
+
+                <button class="active"
+                        id="loginTab"
+                        onclick="showAuthForm('login')">
+                    SIGN IN
+                </button>
+
+                <button id="signupTab"
+                        onclick="showAuthForm('signup')">
+                    CREATE ACCOUNT
+                </button>
+
+            </div>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm"
+                  onsubmit="event.preventDefault();loginUser()">
+
+                <label class="auth-field">
+                    <span>Email address</span>
+
+                    <input id="loginEmail"
+                           type="email"
+                           placeholder="name@company.com"
+                           required>
+                </label>
+
+
+                <label class="auth-field">
+                    <span>Password</span>
+
+                    <input id="loginPassword"
+                           type="password"
+                           placeholder="Enter your password"
+                           required>
+                </label>
+
+                <div class="forgot-row">
+                    <button type="button" class="forgot-link" onclick="showForgotPassword()">Forgot password?</button>
+                </div>
+
+                <div class="auth-error" id="loginError"></div>
+
+                <button class="auth-submit" type="submit">
+                    Sign in →
+                </button>
+
+            </form>
+
+            <!-- FORGOT PASSWORD FORM -->
+            <form id="forgotPasswordForm" style="display:none" onsubmit="event.preventDefault();resetPassword()">
+                <label class="auth-field">
+                    <span>Registered email address</span>
+                    <input id="resetEmail" type="email" placeholder="name@company.com" required>
+                </label>
+                <label class="auth-field">
+                    <span>New password</span>
+                    <input id="resetNewPassword" type="password" minlength="6" placeholder="At least 6 characters" required>
+                </label>
+                <label class="auth-field">
+                    <span>Confirm new password</span>
+                    <input id="resetConfirmPassword" type="password" minlength="6" placeholder="Re-enter new password" required>
+                </label>
+                <div class="auth-error" id="resetError"></div>
+                <button class="auth-submit" type="submit">Reset password →</button>
+                <button class="back-login" type="button" onclick="showAuthForm('login')">← Back to sign in</button>
+            </form>
+
+            <!-- SIGNUP FORM -->
+
+            <form id="signupForm"
+                  style="display:none"
+                  onsubmit="event.preventDefault();signupUser()">
+
+                <label class="auth-field">
+                    <span>Full name</span>
+
+                    <input id="signupName"
+                           placeholder="Your full name"
+                           required>
+                </label>
+
+
+                <label class="auth-field">
+                    <span>Business / Organisation</span>
+
+                    <input id="signupOrg"
+                           placeholder="Organisation name"
+                           required>
+                </label>
+
+
+                <label class="auth-field">
+                    <span>Work email</span>
+
+                    <input id="signupEmail"
+                           type="email"
+                           placeholder="name@company.com"
+                           required>
+                </label>
+
+
+                <label class="auth-field">
+                    <span>Account type</span>
+
+                    <select id="signupRole">
+
+                        <option>Buyer</option>
+                        <option>Supplier</option>
+                        <option>Service provider</option>
+                        <option>Institution</option>
+
+                    </select>
+                </label>
+
+
+                <label class="auth-field">
+                    <span>Create password</span>
+
+                    <input id="signupPassword"
+                           type="password"
+                           minlength="6"
+                           placeholder="At least 6 characters"
+                           required>
+                </label>
+
+
+                <div class="auth-error" id="signupError"></div>
+
+                <button class="auth-submit" type="submit">
+                    Create account →
+                </button>
+
+            </form>
+
+
+            <div class="demo-box">
+
+                <b>DEMO ADMIN ACCESS</b><br>
+
+                Email: admin@atlas.com<br>
+
+                Password: Atlas@123
+
+                <br>
+
+                <span style="color:#778596">
+                    Demo authentication only.
+                    Do not use real passwords.
+                </span>
+
+            </div>
+
+
+            <div class="auth-note">
+                This prototype stores demo account data only
+                in this browser session. Do not enter real credentials.
+            </div>
+
+        </section>
+
+    </div>
+
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<div class="topline"></div>
+
+<header>
+
+    <div class="header-inner">
+
+        <div class="brand">
+            ATLAS<span>.</span>
+        </div>
+
+        <div class="edition">
+            UNIVERSAL EXCHANGE<br>
+            SECTOR INTELLIGENCE PLATFORM
+        </div>
+
+
+        <nav>
+
+            <a href="#overview" class="active">Overview</a>
+
+            <a href="#sectors">Sectors</a>
+
+            <a href="#marketplace">Marketplace</a>
+
+            <a href="#intelligence">Intelligence</a>
+
+            <a href="#industryNews">Industry News</a>
+
+        </nav>
+
+
+        <div class="header-actions">
+
+            <button class="icon-btn"
+                    title="Notifications"
+                    onclick="notify('You are all caught up.')">
+                ♧
+            </button>
+
+
+            <div class="user-menu">
+
+                <button class="profile"
+                        id="profileButton"
+                        onclick="toggleUserMenu()">
+                    A
+                </button>
+
+
+                <div class="user-menu-pop" id="userMenu">
+
+                    <button id="menuIdentity" disabled>
+                        Signed in
+                    </button>
+
+                    <button id="adminMenuButton"
+                            onclick="openAdmin()">
+                        Administration console ↗
+                    </button>
+
+                    <button onclick="showMain()">
+                        Marketplace overview
+                    </button>
+
+                    <button onclick="logoutUser()">
+                        Sign out
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- ================= MAIN DASHBOARD ================= -->
+
+<main class="wrap main-view hidden" id="mainView">
+
+
+<div id="overview">
+
+
+    <!-- HERO SECTION -->
+
+    <div class="eyebrow">
+        THE CONNECTED ECONOMY / ISSUE 01 — LIVE DEMO
+    </div>
+
+
+    <section class="hero">
+
+        <div class="hero-main">
+
+            <div class="eyebrow" style="color:#62dce9">
+                ONE PLATFORM. EVERY INDUSTRY.
+            </div>
+
+            <h1>
+                Markets move better<br>
+                when they move <em>together.</em>
+            </h1>
+
+            <p>
+                ATLAS connects fragmented supply chains,
+                service providers, buyers and institutions
+                across industries — creating one intelligent
+                network for discovery, trade and growth.
+            </p>
+
+
+            <div class="hero-cta">
+
+                <button class="btn btn-primary"
+                        onclick="document.querySelector('#marketplace').scrollIntoView({behavior:'smooth'})">
+                    Explore marketplace ↗
+                </button>
+
+                <button class="btn btn-outline"
+                        onclick="notify('Platform overview')">
+                    Platform overview
+                </button>
+
+            </div>
+
+        </div>
+
+
+        <div class="hero-side">
+
+            <div>
+
+                <div class="side-head">
+
+                    <span class="eyebrow">NETWORK PULSE</span>
+
+                    <span class="live">
+                        <i class="dot"></i>
+                        SIMULATED LIVE
+                    </span>
+
+                </div>
+
+
+                <h2>
+                    Connected commerce,<br>
+                    in real time.
+                </h2>
+
+                <p>
+                    Illustrative network activity across
+                    the ATLAS multi-sector ecosystem.
+                </p>
+
+            </div>
+
+
+            <div class="signal" id="signal"></div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- STATISTICS -->
+
+    <section class="stats">
+
+        <div class="stat">
+
+            <small>Registered partners</small>
+
+            <strong data-count="12840">0</strong>
+
+            <span class="trend">
+                ↑ 12.8%
+                <span style="color:var(--muted)">
+                    vs last period
+                </span>
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>Active sectors</small>
+
+            <strong data-count="12">0</strong>
+
+            <span class="trend">
+                ↑ 3 sectors
+                <span style="color:var(--muted)">
+                    onboarded
+                </span>
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>Orders facilitated</small>
+
+            <strong data-count="86420">0</strong>
+
+            <span class="trend">
+                ↑ 18.4%
+                <span style="color:var(--muted)">
+                    vs last period
+                </span>
+            </span>
+
+        </div>
+
+
+        <div class="stat">
+
+            <small>Gross trade value</small>
+
+            <strong data-count="42.6"
+                    data-prefix="₹"
+                    data-suffix=" Cr">
+                0
+            </strong>
+
+            <span class="trend">
+                ↑ 9.6%
+                <span style="color:var(--muted)">
+                    vs last period
+                </span>
+            </span>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- TWELVE SECTORS -->
+
+    <section id="sectors">
+
+        <div class="section-head">
+
+            <div>
+
+                <div class="eyebrow">
+                    01 / INDUSTRY NETWORK
+                </div>
+
+                <h2>One gateway. Twelve sectors.</h2>
+
+            </div>
+
+            <p>
+                Select a sector to filter marketplace listings.
+            </p>
+
+        </div>
+
+
+        <div class="sectors" id="sectorGrid"></div>
+
+    </section>
+
+
+
+    <!-- MARKETPLACE AND INTELLIGENCE -->
+
+    <div class="content-grid" id="marketplace">
+
+
+        <!-- MARKETPLACE -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <h3>Marketplace intelligence</h3>
+
+                <span>DEMO LISTINGS · INDIA</span>
+
+            </div>
+
+
+            <div class="filters">
+
+                <input id="search"
+                       placeholder="Search products, services or providers…"
+                       oninput="renderListings()">
+
+
+                <select id="sectorFilter"
+                        onchange="renderListings()">
+
+                    <option value="All">All sectors</option>
+
+                </select>
+
+
+                <select id="sort"
+                        onchange="renderListings()">
+
+                    <option value="default">Recommended</option>
+
+                    <option value="price">
+                        Price: low to high
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>Listing / Provider</th>
+
+                        <th>Sector</th>
+
+                        <th>Indicative price</th>
+
+                        <th>Availability</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="listingRows"></tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- INTELLIGENCE PANEL -->
+
+        <aside class="panel" id="intelligence">
+
+            <div class="panel-title">
+
+                <h3>Network activity</h3>
+
+                <span>LAST 7 DAYS</span>
+
+            </div>
+
+
+            <div class="chart-wrap">
+
+                <canvas id="chart"></canvas>
+
+            </div>
+
+
+            <div class="chart-legend">
+
+                <span>
+                    <i class="legend-dot"
+                       style="background:#1266f1"></i>
+                    Transactions
+                </span>
+
+                <span>
+                    <i class="legend-dot"
+                       style="background:#45d5e8"></i>
+                    New partners
+                </span>
+
+            </div>
+
+
+            <div style="border-top:1px solid var(--line);
+                        margin-top:20px;
+                        padding-top:16px"
+                 class="panel-title">
+
+                <h3>Recent signals</h3>
+
+                <span>ACTIVITY FEED</span>
+
+            </div>
+
+
+            <div id="activity"></div>
+
+        </aside>
+
+    </div>
+
+
+
+    <!-- INDUSTRY NEWS -->
+
+    <section id="industryNews" style="margin-top:30px">
+
+        <div class="section-head">
+
+            <div>
+
+                <div class="eyebrow">
+                    03 / INDUSTRY INTELLIGENCE
+                </div>
+
+                <h2>News from every sector.</h2>
+
+            </div>
+
+            <p>
+                Explore sector-wise updates and analysis.
+            </p>
+
+        </div>
+
+
+        <div class="news-disclaimer">
+
+            DEMO CONTENT: These are illustrative sample
+            headlines for the Academic Review interface,
+            not verified current news. Connect a trusted
+            news API or editorial source before publishing.
+
+        </div>
+
+
+        <div class="news-toolbar" id="newsFilters"></div>
+
+        <div class="news-grid" id="newsGrid"></div>
+
+    </section>
+
+
+
+    <!-- HOW IT WORKS -->
+
+    <section style="margin-top:24px">
+
+        <div class="section-head">
+
+            <div>
+
+                <div class="eyebrow">
+                    02 / HOW IT WORKS
+                </div>
+
+                <h2>
+                    From fragmented markets to connected value.
+                </h2>
+
+            </div>
+
+        </div>
+
+
+        <div class="flow">
+
+
+            <div class="flow-step">
+
+                <small>01 / DISCOVER</small>
+
+                <b>Find opportunities</b>
+
+                <span>
+                    Search suppliers, buyers and services.
+                </span>
+
+            </div>
+
+
+            <div class="flow-step">
+
+                <small>02 / CONNECT</small>
+
+                <b>Match intelligently</b>
+
+                <span>
+                    Compare availability, location and requirements.
+                </span>
+
+            </div>
+
+
+            <div class="flow-step">
+
+                <small>03 / TRANSACT</small>
+
+                <b>Coordinate trade</b>
+
+                <span>
+                    Manage enquiries, orders and fulfilment.
+                </span>
+
+            </div>
+
+
+            <div class="flow-step">
+
+                <small>04 / LEARN</small>
+
+                <b>Improve outcomes</b>
+
+                <span>
+                    Use network insights to make better decisions.
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <span>
+            ATLAS. — UNIVERSAL SECTOR AGGREGATOR
+        </span>
+
+        <span>
+            ACADEMIC REVIEW PROTOTYPE · ALL METRICS ARE SIMULATED
+        </span>
+
+        <span>
+            © 2026 ATLAS CONCEPT
+        </span>
+
+    </footer>
+
+
+</div>
+
+</main>
+
+
+
+<!-- ================= ADMIN DASHBOARD ================= -->
+
+<section class="wrap admin-view" id="adminView">
+
+
+    <div class="admin-top">
+
+        <div>
+
+            <div class="eyebrow">
+                ATLAS / CONTROL CENTRE
+            </div>
+
+            <h1>Administration console</h1>
+
+            <p>
+                Monitor platform activity, review partner
+                applications and oversee the sector network.
+            </p>
+
+        </div>
+
+
+        <button class="admin-back" onclick="showMain()">
+            ← Marketplace
+        </button>
+
+    </div>
+
+
+
+    <!-- ADMIN STATISTICS -->
+
+    <div class="admin-stats">
+
+
+        <div class="admin-card">
+
+            <small>Total registered accounts</small>
+
+            <strong id="adminUsers">12,840</strong>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <small>Pending verifications</small>
+
+            <strong id="pendingCount">08</strong>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <small>Active marketplace listings</small>
+
+            <strong>3,462</strong>
+
+        </div>
+
+
+        <div class="admin-card">
+
+            <small>Flagged activity</small>
+
+            <strong>03</strong>
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ADMIN CONTENT -->
+
+    <div class="admin-grid">
+
+
+        <!-- APPROVAL QUEUE -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <h3>Partner verification queue</h3>
+
+                <span>REVIEW REQUIRED</span>
+
+            </div>
+
+
+            <table class="admin-table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>ORGANISATION</th>
+
+                        <th>SECTOR</th>
+
+                        <th>STATUS</th>
+
+                        <th>ACTION</th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="approvalRows"></tbody>
+
+            </table>
+
+        </section>
+
+
+
+        <!-- ADMIN CONTROLS -->
+
+        <section class="panel">
+
+            <div class="panel-title">
+
+                <h3>Platform administration</h3>
+
+                <span>QUICK CONTROLS</span>
+
+            </div>
+
+
+            <button class="admin-action"
+                    onclick="notify('User management is simulated.')">
+
+                User and role management
+
+            </button>
+
+
+            <button class="admin-action"
+                    onclick="notify('All 12 demo sectors are enabled.')">
+
+                Sector configuration
+
+            </button>
+
+
+            <button class="admin-action"
+                    onclick="notify('Moderation module is simulated.')">
+
+                Reports and moderation
+
+            </button>
+
+
+            <button class="admin-action"
+                    onclick="notify('System settings are not connected.')">
+
+                System settings
+
+            </button>
+
+
+            <button class="admin-action"
+                    onclick="notify('Demo report generated.')">
+
+                Export platform report ↓
+
+            </button>
+
+
+        </section>
+
+
+    </div>
+
+
+
+    <!-- REGISTERED ACCOUNTS -->
+
+    <section class="panel" style="margin-top:14px">
+
+        <div class="panel-title">
+
+            <h3>Recent account registrations</h3>
+
+            <span>DEMO DATA</span>
+
+        </div>
+
+
+        <table class="admin-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>NAME</th>
+
+                    <th>ORGANISATION</th>
+
+                    <th>EMAIL</th>
+
+                    <th>ACCOUNT TYPE</th>
+
+                    <th>STATUS</th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody id="accountRows"></tbody>
+
+        </table>
+
+    </section>
+
+
+
+    <footer class="footer">
+
+        <span>ATLAS ADMINISTRATION</span>
+
+        <span>RESTRICTED DEMO CONSOLE</span>
+
+        <span>© 2026 ATLAS CONCEPT</span>
+
+    </footer>
+
+
+</section>
+
+
+
+<!-- NOTIFICATION MESSAGE -->
+
+<div class="toast" id="toast"></div>
+
+
+<!-- PART 3 JAVASCRIPT WILL GO BELOW THIS LINE -->
+<script src="script.js" defer></script>
+
+</body>
+</html>
